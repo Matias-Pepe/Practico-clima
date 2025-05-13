@@ -6,4 +6,10 @@
 
 {% block body %}
     <h1>Pagina de Inicio</h1>
+    <h2>Selecciona una ciudad</h2>
+    {% for ciudad in ciudades %}
+        <div class="ciudad">
+            <a href="/clima?ciudad= {{ ciudad }}">{{ ciudad }}</a>
+        </div>
+    {% endfor %}    
 {% endblock %}

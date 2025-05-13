@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Estado del Clima</h1>
+    <h1>Estado del Clima en {{ ciudad }}</h1>
     <h2>Fecha de hoy {{fecha}}</h2>
+    <div>
+        <p><strong>Temperatura:</strong>{{ clima.temperature  }}°C</p>
+        <p><strong>Velocidad del viento:</strong>{{ clima.windspeed }} km/h</p>
+        <p><strong>Direccion del viento:</strong>{{ clima.winddirection }}°</p>
+        <p><strong>Cdigo del tiempo:</strong>{{ clima.weathercode }}</p>
+    </div>
+    
 {% endblock %}
