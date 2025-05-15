@@ -23,19 +23,20 @@ ciudades = {
 def index():
     return render_template(
         'index.html',
-        ciudades=ciudades.keys()
+        ciudades = ciudades
     )
 
 @app.route('/clima')
 def clima():
-    ciudad = request.args.get('ciudad', '').lower()
+    ciudad = request.args.get('ciudad','',str)
     lat = ciudades[ciudad]['lat']
     lon = ciudades[ciudad]['lon']
-    response = requests.get("https://api.open-meteo.com/v1/forecast?latitude=-31.42&longitude=-64.18&current_weather=true")
+    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true")
     data = response.json()
     return render_template(
         'clima.html',
         fecha=date.today().strftime("%d/%m/%Y"),
-        clima=clima['current_weather']
+        clima=data,
+        ciudad=ciudad
     )
 
